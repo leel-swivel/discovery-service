@@ -32,7 +32,6 @@ jobs:
         run: mvn -B test
 
   scan:
-    needs: tests
     name: Build and analyze
     runs-on: ubuntu-latest
     steps:
@@ -60,7 +59,7 @@ jobs:
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}  # Needed to get PR information, if any
           SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
-        run: mvn -B verify org.sonarsource.scanner.maven:sonar-maven-plugin:sonar -Dsonar.projectKey=leel-swivel_booking-service -Dsonar.qualitygate.wait=true
+        run: mvn -B verify org.sonarsource.scanner.maven:sonar-maven-plugin:sonar -Dsonar.projectKey=leel-swivel_discovery-service -Dsonar.qualitygate.wait=true
 
   build:
     needs: scan
